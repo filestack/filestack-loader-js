@@ -1,0 +1,33 @@
+{
+  "name": "@filestack/loader",
+  "version": "1.0.0",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "dist/index.js",
+  "browser": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "author": {
+    "name": "PCholuj",
+    "email": "piotr.choluj@filestack.com"
+  },
+  "homepage": "https://github.com/filestack/filestack-loader-js",
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:filestack/filestack-loader-js.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npx tsc",
+    "release": "npx standard-version"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^1.19.1",
+    "standard-version": "^7.1.0",
+    "tslint": "^6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  }
+}
