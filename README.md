@@ -2,7 +2,7 @@
   <a href="https://www.filestack.com"><img src="https://static.filestackapi.com/filestack-js.svg?refresh" align="center" width="250" /></a>  
 </p>
 <p align="center">
-  <strong>Dependency free js async script loader maintained by @Filestack</strong>
+  <strong>Dependency free js async script loader for browsers maintained by @Filestack</strong>
 </p>
 
 ## Installation

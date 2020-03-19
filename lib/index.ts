@@ -45,7 +45,7 @@ const modules = filestackInternals && filestackInternals.modules;
  * 
  * @param {*} modules 
  */
-export const loadModules = (modules) => Promise.all(modules.map(({ url, id }) => loadModule(url, id)));
+export const loadModules = (modules) => Promise.all(modules.map(({ id, url }) => loadModule(id, url)));
 
 /**
  * Load single module from url with given id
