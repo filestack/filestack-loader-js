@@ -1,4 +1,4 @@
-const MODULE_PREFIX = 'filestack-';
+const MODULE_PREFIX = 'fs-loader-';
 
 export type ModuleDef = {
   promise?: Promise<any>
@@ -41,11 +41,35 @@ const filestackInternals = initializeGlobalNamespace();
 const modules = filestackInternals && filestackInternals.modules;
 
 /**
+ * Remove listeners (browser compatible)
+ * 
+ * @param node 
+ * @param func 
+ * @param name 
+ */
+const removeListener = (node, func, name, ) => {
+  if (node.detachEvent) {
+    node.detachEvent('onreadystatechange', func);
+  } else {
+    node.removeEventListener(name, func, false);
+  }
+}
+
+/**
  * Load multiple modules
  * 
  * @param {*} modules 
  */
-export const loadModules = (modules) => Promise.all(modules.map(({ id, url }) => loadModule(id, url)));
+export const loadModules = (modulesList) => Promise.all(modulesList.map(({ id, url }) => loadModule(id, url))).then((res) => {
+  const toReturn = {};
+
+  res.forEach((mod, idx) => {
+    const el = modulesList[idx];
+    toReturn[el.id] = mod;
+  });
+
+  return toReturn;
+});
 
 /**
  * Load single module from url with given id
@@ -59,6 +83,8 @@ export const loadModule = (id: string, url: string) => {
   }
 
   let moduleDefinition = modules[id];
+
+  id =  MODULE_PREFIX + id;
 
   if (!moduleDefinition) {
     modules[id] = {};
@@ -74,28 +100,38 @@ export const loadModule = (id: string, url: string) => {
   }
 
   return moduleDefinition.promise = new Promise((resolve, reject) => {
-    const embedScript = () => {
-      moduleDefinition.resolvePromise = resolve;
-      const script = document.createElement('script');
-      script.src = url;
-      script.onerror = reject;
+    const readyStateChange = (evt: any) => {
+      if (evt.type === 'load' || (/^(complete|loaded)$/.test((evt.currentTarget || evt.srcElement).readyState))) {
+        const node =  evt.currentTarget || evt.srcElement;
 
-      if (id) {
-        script.id = MODULE_PREFIX + id;
+        removeListener(node, readyStateChange, 'load');
+        removeListener(node, reject, 'error');
+
+        // slow dow checking if module is loaded to ensure that script that  register module is called
+        setTimeout(() => resolve(modules[id] ? modules[id].instance : undefined), 10);
       }
+    }
 
-      document.body.appendChild(script);
-    };
+    const script = document.createElement('script');
+    
+    script.id = id;
 
-    const checkIfDomReady = () => {
-      if (document.readyState === 'complete') {
-        return embedScript();
-      } 
+    // @ts-ignore fix for IE
+    if (script.attachEvent && !(script.attachEvent.toString && script.attachEvent.toString().indexOf('[native code') < 0)) {
+      // @ts-ignore
+      script.attachEvent('onreadystatechange', readyStateChange);
+    } else {
+      script.addEventListener('load', readyStateChange, false);
+      script.addEventListener('onerror', reject, false);
+    }
 
-      setTimeout(checkIfDomReady, 50);
-    };
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('charset', 'utf-8');
+    script.setAttribute('async', 'true');
 
-    checkIfDomReady();
+    script.src = url;
+
+    document.body.appendChild(script);
   });
 };
 
@@ -115,15 +151,10 @@ export const registerModule = (id: string, instance: any, metadata: any) => {
     throw new Error('Loader is not initialized')
   }
 
-  const moduleDefinition = modules[id];
+  id = MODULE_PREFIX + id;
 
-  if (moduleDefinition && moduleDefinition.resolvePromise) {
-    moduleDefinition.instance = instance;
-    moduleDefinition.metadata = metadata;
-
-    moduleDefinition.resolvePromise(instance);
-    delete moduleDefinition.promise;
-    delete moduleDefinition.resolvePromise;
+  if (modules[id]) {
+    modules[id] = { instance, metadata }
   }
 };
 
@@ -152,4 +183,13 @@ export const loadCss = (url) => {
     link.addEventListener('load', loaded);
     head.appendChild(link);
   });
+};
+
+/**
+ * Enum just for unify filestack module names
+ */
+export enum FILESTACK_MODULES {
+  FILESTACK_SDK = 'filestack-sdk',
+  TRANSFORMS_UI = 'transforms-ui',
+  PICKER = 'picker',
 };

@@ -15,10 +15,9 @@ npm install @filestack/loader
 
 ### Loading JavaScript Modules
 
-If you have two modules `a.js` and `b.js` and you want to load `b` into `a`...
+To load async modules just call method loadModule
 
 ```js
-// file a.js
 import { loadModule } from '@filestack/loader';
 
 loadModule('module-id', 'url/to/b.js').then((b) => {
@@ -27,7 +26,8 @@ loadModule('module-id', 'url/to/b.js').then((b) => {
 ```
 
 ```js
-// file b.js
+You can register some metadata after module will be loaded with register module
+
 import { registerModule } from '@filestack/loader';
 
 const api = {
@@ -37,7 +37,7 @@ const api = {
 };
 
 // Module need to "tell" the loader that it's loaded and ready.
-registerModule('module-id', api);
+registerModule('module-id', api, { version: 123 });
 ```
 
 ### Loading CSS
