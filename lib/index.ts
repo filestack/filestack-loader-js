@@ -142,7 +142,7 @@ export const loadModule = (id: string, url: string) => {
  * @param {any} instance 
  * @param {any} metadata - additional module metadata like version
  */
-export const registerModule = (id: string, instance: any, metadata: any) => {
+export const registerModule = (id: string, instance: any, metadata?: any) => {
   if (!id) {
     throw new Error('Module id is required')
   }

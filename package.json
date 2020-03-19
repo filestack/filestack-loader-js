@@ -3,7 +3,9 @@
   "version": "1.0.2",
   "license": "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
-  "browser": "dist/index.umd.js",
+  "module": "dist/index.js",
+  "browser": "dist/index.esm.js",
+  "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
   "author": "PCholuj <piotr.choluj@filestack.com>",
@@ -17,10 +19,12 @@
   ],
   "scripts": {
     "build": "npx tsc && npx webpack",
-    "release": "npx standard-version"
+    "release": "npx standard-version",
+    "prepublish": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
+    "@purtuga/esm-webpack-plugin": "^1.2.1",
     "prettier": "^1.19.1",
     "standard-version": "^7.1.0",
     "tslint": "^6.1.0",

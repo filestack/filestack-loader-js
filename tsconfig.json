@@ -4,7 +4,7 @@
       "outDir": "dist",
       "rootDir": "lib",
       "moduleResolution": "node",
-      "module": "commonjs",
+      "module": "esnext",
       "declaration": true,
       "importHelpers": true,
       "inlineSourceMap": true,
