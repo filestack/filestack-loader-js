@@ -1,19 +1,16 @@
 {
   "name": "@filestack/loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
   "browser": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
-  "author": {
-    "name": "PCholuj",
-    "email": "piotr.choluj@filestack.com"
-  },
+  "author": "PCholuj <piotr.choluj@filestack.com>",
   "homepage": "https://github.com/filestack/filestack-loader-js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:filestack/filestack-loader-js.git"
+    "url": "git+ssh://git@github.com/filestack/filestack-loader-js.git"
   },
   "files": [
     "dist"
@@ -31,5 +28,12 @@
     "typescript": "^3.8.3",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
+  },
+  "description": "Dependency free js async script loader for browsers maintained by @Filestack",
+  "bugs": {
+    "url": "https://github.com/filestack/filestack-loader-js/issues"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
