@@ -2,7 +2,7 @@ const path = require('path');
 const EsmWebpackPlugin = require('@purtuga/esm-webpack-plugin');
  
 const conf = {
-  entry: './dist/index.js',
+  entry: './dist/module/index.js',
   devtool: 'inline-source-map',
   mode: 'production',
   module: {

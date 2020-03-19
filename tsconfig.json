@@ -1,40 +1,20 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "outDir": "dist",
-      "rootDir": "lib",
-      "moduleResolution": "node",
-      "module": "esnext",
-      "declaration": true,
-      "importHelpers": true,
-      "inlineSourceMap": true,
-      "inlineSources": true,
-      "listFiles": false,
-      "traceResolution": false,
-      "skipLibCheck": true,
-      "pretty": true,
-      "lib" : [
-        "es6",
-        "dom"
-      ],
-      "baseUrl": ".",
-      "typeRoots": [ "index.d.ts" ]
-    },
-    "include": [
-      "lib/**/*.ts"
-    ],
-    "exclude": [
-      "node_modules/**"
-    ],
-    "compileOnSave": false,
-  
-    /* Strict Options */
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny" : true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-  }
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": "lib",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "skipLibCheck": true,
+    "composite": true,
+    "declarationMap": true,
+    "pretty": true,
+    "baseUrl": "./lib",
+    "lib": ["es6", "dom"],
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "compileOnSave": false
+}

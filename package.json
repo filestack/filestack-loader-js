@@ -3,11 +3,10 @@
   "version": "1.0.3",
   "license": "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
-  "module": "dist/index.js",
+  "module": "dist/module/index.js",
   "browser": "dist/index.esm.js",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
-  "source": "src/index.ts",
   "author": "PCholuj <piotr.choluj@filestack.com>",
   "homepage": "https://github.com/filestack/filestack-loader-js",
   "repository": {
@@ -18,7 +17,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "npx tsc && npx webpack",
+    "build": "npm run build:main && npm run build:module && npx webpack",
+    "build:main": "npx tsc --p tsconfig.json",
+    "build:module": "npx tsc --p tsconfig.module.json",
     "release": "npx standard-version",
     "prepublish": "npm run build"
   },
