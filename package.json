@@ -1,6 +1,6 @@
 {
   "name": "@filestack/loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
   "browser": "dist/index.umd.js",
