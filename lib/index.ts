@@ -82,6 +82,10 @@ export const loadModules = (modulesList) => Promise.all(modulesList.map(({ id, u
  * @param {*} url
  */
 export const loadModule = (id: string, url: string) => {
+  if (typeof window !== 'object') {
+    return Promise.reject(new Error('Load module is working only on browser env'));
+  }
+
   if (!id) {
     throw new Error('Module id is required')
   }
@@ -147,6 +151,11 @@ export const loadModule = (id: string, url: string) => {
  * @param {any} metadata - additional module metadata like version
  */
 export const registerModule = (id: string, instance: any, metadata?: any) => {
+  // loader not working on nodejs envs
+  if (typeof window !== 'object') {
+    return;
+  }
+
   if (!id) {
     throw new Error('Module id is required')
   }
