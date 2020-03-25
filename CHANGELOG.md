@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/filestack/filestack-loader-js/compare/v1.0.5...v1.0.6) (2020-03-25)
+
+
+### Bug Fixes
+
+* **node:** disable register module method when window is missing ([13f57f5](https://github.com/filestack/filestack-loader-js/commit/13f57f5da2f12cad91e92e3375bd356262e667ff))
+* **nodejs:** window is not defined in node env ([293bbdd](https://github.com/filestack/filestack-loader-js/commit/293bbddcaa4665d6402ddb884253e9ab93c752ef))
+
 ### [1.0.5](https://github.com/filestack/filestack-loader-js/compare/v1.0.4...v1.0.5) (2020-03-25)
 
 
