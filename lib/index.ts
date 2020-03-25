@@ -1,4 +1,5 @@
 const MODULE_PREFIX = 'fs-loader-';
+const globalHolder: any = {};
 
 export type ModuleDef = {
   promise?: Promise<any>
@@ -14,24 +15,27 @@ export type Namespace = {
 };
 
 const initializeGlobalNamespace = () => {
-  let namespace: Namespace;
+  let holder = window;
 
-  if (typeof window === 'object') {
+  // if there is no window obj use nodejs global lib variable
+  if (typeof holder !== 'object') {
+    holder = globalHolder;
+  }
+
+  // @ts-ignore
+  let namespace: Namespace = holder.filestackInternals;
+
+  if (!namespace) {
+    namespace = {
+      modules: {},
+    };
+
     // @ts-ignore
-    namespace = window.filestackInternals;
+    window.filestackInternals = namespace;
+  }
 
-    if (!namespace) {
-      namespace = {
-        modules: {},
-      };
-
-      // @ts-ignore
-      window.filestackInternals = namespace;
-    }
-
-    if (!namespace.modules) {
-      namespace.modules = {};
-    }
+  if (!namespace.modules) {
+    namespace.modules = {};
   }
   
   return namespace;
