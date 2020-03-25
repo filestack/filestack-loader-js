@@ -18,7 +18,7 @@ const initializeGlobalNamespace = () => {
   let holder:any;
 
   // if there is no window obj use nodejs global lib variable
-  if (window && typeof window !== 'object') {
+  if (typeof window === 'undefined') {
     holder = globalHolder;
   } else {
     holder = window
@@ -32,8 +32,7 @@ const initializeGlobalNamespace = () => {
       modules: {},
     };
 
-    // @ts-ignore
-    window.filestackInternals = namespace;
+    holder.filestackInternals = namespace;
   }
 
   if (!namespace.modules) {
@@ -84,7 +83,7 @@ export const loadModules = (modulesList) => Promise.all(modulesList.map(({ id, u
  * @param {*} url
  */
 export const loadModule = (id: string, url: string) => {
-  if (window && typeof window !== 'object') {
+  if (typeof window === 'undefined') {
     return Promise.reject(new Error('Load module is working only on browser env'));
   }
 
@@ -154,7 +153,7 @@ export const loadModule = (id: string, url: string) => {
  */
 export const registerModule = (id: string, instance: any, metadata?: any) => {
   // loader not working on nodejs envs
-  if (window && typeof window !== 'object') {
+  if (typeof window === 'undefined') {
     return;
   }
 
