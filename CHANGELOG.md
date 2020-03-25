@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/filestack/filestack-loader-js/compare/v1.0.6...v1.0.7) (2020-03-25)
+
+
+### Bug Fixes
+
+* **nodejs:** fix problems with window object in node ([9ac935e](https://github.com/filestack/filestack-loader-js/commit/9ac935ecf1093c559497ef5d449bf6e28ab6ed51))
+
 ### [1.0.6](https://github.com/filestack/filestack-loader-js/compare/v1.0.5...v1.0.6) (2020-03-25)
 
 
