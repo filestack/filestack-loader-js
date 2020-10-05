@@ -91,9 +91,8 @@ export const loadModule = (id: string, url: string) => {
     throw new Error('Module id is required')
   }
 
-  let moduleDefinition = modules[id];
-
   id =  MODULE_PREFIX + id;
+  let moduleDefinition = modules[id];
 
   if (!moduleDefinition) {
     modules[id] = {};
