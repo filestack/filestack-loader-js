@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.9](https://github.com/filestack/filestack-loader-js/compare/v1.0.8...v1.0.9) (2021-03-25)
+
+
+### Bug Fixes
+
+* **instances:** move adding prefix before check if module is loaded ([c7bba8b](https://github.com/filestack/filestack-loader-js/commit/c7bba8bb18ea33b0862292fb96557fd6d5a67023))
+
 ### [1.0.8](https://github.com/filestack/filestack-loader-js/compare/v1.0.7...v1.0.8) (2020-10-05)
 
 ### [1.0.7](https://github.com/filestack/filestack-loader-js/compare/v1.0.6...v1.0.7) (2020-03-25)
