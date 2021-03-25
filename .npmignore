@@ -1,3 +1,4 @@
 .prettierrc
 .tslint.json
 .gitignore
+tsconfig.tsbuildinfo

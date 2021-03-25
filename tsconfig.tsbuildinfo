@@ -50,12 +50,20 @@
         "signature": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303"
       },
       "./lib/index.ts": {
-        "version": "80fb160ca32a1919f0c951590631512a2df372aaf2da8104d514d4f31fe07ae0",
+        "version": "a5cef4b356ac020b7dd625b71c1b66cd1158089c478d58de84747a6ddd5004f4",
         "signature": "1224cc0a40563110dbb362a71077cd2ce99a33195fc6b9fdb4d999cc6cad8ee6"
       },
       "./node_modules/@types/color-name/index.d.ts": {
         "version": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e",
         "signature": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e"
+      },
+      "./node_modules/@types/minimist/index.d.ts": {
+        "version": "3602dfff3072caea42f23a9b63fb34a7b0c95a62b93ce2add5fe6b159447845e",
+        "signature": "3602dfff3072caea42f23a9b63fb34a7b0c95a62b93ce2add5fe6b159447845e"
+      },
+      "./node_modules/@types/normalize-package-data/index.d.ts": {
+        "version": "c9ad058b2cc9ce6dc2ed92960d6d009e8c04bef46d3f5312283debca6869f613",
+        "signature": "c9ad058b2cc9ce6dc2ed92960d6d009e8c04bef46d3f5312283debca6869f613"
       }
     },
     "options": {
@@ -80,8 +88,12 @@
     "referencedMap": {},
     "exportedModulesMap": {},
     "semanticDiagnosticsPerFile": [
-      "./node_modules/typescript/lib/lib.es5.d.ts",
+      "./lib/index.ts",
+      "./node_modules/@types/color-name/index.d.ts",
+      "./node_modules/@types/minimist/index.d.ts",
+      "./node_modules/@types/normalize-package-data/index.d.ts",
       "./node_modules/typescript/lib/lib.es2015.d.ts",
+      "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.dom.d.ts",
       "./node_modules/typescript/lib/lib.es2015.core.d.ts",
       "./node_modules/typescript/lib/lib.es2015.collection.d.ts",
@@ -91,9 +103,7 @@
       "./node_modules/typescript/lib/lib.es2015.proxy.d.ts",
       "./node_modules/typescript/lib/lib.es2015.reflect.d.ts",
       "./node_modules/typescript/lib/lib.es2015.symbol.d.ts",
-      "./node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
-      "./node_modules/@types/color-name/index.d.ts",
-      "./lib/index.ts"
+      "./node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts"
     ]
   },
   "version": "3.8.3"
