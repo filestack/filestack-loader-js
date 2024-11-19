@@ -38,7 +38,7 @@ const initializeGlobalNamespace = () => {
   if (!namespace.modules) {
     namespace.modules = {};
   }
-  
+
   return namespace;
 };
 
@@ -47,10 +47,10 @@ const modules = filestackInternals && filestackInternals.modules;
 
 /**
  * Remove listeners (browser compatible)
- * 
- * @param node 
- * @param func 
- * @param name 
+ *
+ * @param node
+ * @param func
+ * @param name
  */
 const removeListener = (node, func, name, ) => {
   if (node.detachEvent) {
@@ -62,8 +62,8 @@ const removeListener = (node, func, name, ) => {
 
 /**
  * Load multiple modules
- * 
- * @param {*} modules 
+ *
+ * @param {*} modules
  */
 export const loadModules = (modulesList) => Promise.all(modulesList.map(({ id, url }) => loadModule(id, url))).then((res) => {
   const toReturn = {};
@@ -79,7 +79,7 @@ export const loadModules = (modulesList) => Promise.all(modulesList.map(({ id, u
 /**
  * Load single module from url with given id
  *
- * @param {*} id - module id 
+ * @param {*} id - module id
  * @param {*} url
  */
 export const loadModule = (id: string, url: string) => {
@@ -121,7 +121,7 @@ export const loadModule = (id: string, url: string) => {
     }
 
     const script = document.createElement('script');
-    
+
     script.id = id;
 
     // @ts-ignore fix for IE
@@ -145,9 +145,9 @@ export const loadModule = (id: string, url: string) => {
 
 /**
  * Register that module is ready
- * 
- * @param {string} id 
- * @param {any} instance 
+ *
+ * @param {string} id
+ * @param {any} instance
  * @param {any} metadata - additional module metadata like version
  */
 export const registerModule = (id: string, instance: any, metadata?: any) => {
@@ -173,8 +173,8 @@ export const registerModule = (id: string, instance: any, metadata?: any) => {
 
 /**
  * Load external css from given url
- * 
- * @param {*} url 
+ *
+ * @param {*} url
  */
 export const loadCss = (url) => {
   const alreadyAddedThisTag = document.querySelector(`link[href="${url}"]`);
@@ -194,7 +194,7 @@ export const loadCss = (url) => {
     link.rel = 'stylesheet';
     link.href = url;
     link.addEventListener('load', loaded);
-    head.appendChild(link);
+    head.prepend(link);
   });
 };
 
