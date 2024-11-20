@@ -121,7 +121,7 @@ export const loadModule = (id: string, url: string) => {
     }
 
     const script = document.createElement('script');
-      
+    
     script.id = id;
 
     // @ts-ignore fix for IE
