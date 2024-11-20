@@ -38,7 +38,7 @@ const initializeGlobalNamespace = () => {
   if (!namespace.modules) {
     namespace.modules = {};
   }
-
+ 
   return namespace;
 };
 
@@ -47,10 +47,10 @@ const modules = filestackInternals && filestackInternals.modules;
 
 /**
  * Remove listeners (browser compatible)
- *
- * @param node
- * @param func
- * @param name
+ * 
+ * @param node 
+ * @param func 
+ * @param name 
  */
 const removeListener = (node, func, name, ) => {
   if (node.detachEvent) {
