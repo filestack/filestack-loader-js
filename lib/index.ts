@@ -194,7 +194,7 @@ export const loadCss = (url) => {
     link.rel = 'stylesheet';
     link.href = url;
     link.addEventListener('load', loaded);
-    head.appendChild(link);
+    head.prepend(link);
   });
 };
 
